@@ -75,7 +75,7 @@ def loop():
     arduino.digital_pin_write(BUZZER, 0) 
         
         
-    arduino_data = {"data_humidity": Pizza_ready, }
+    arduino_data = {"Pizza": Pizza_ready, }
     response = requests.post('http://localhost:5000/', json = arduino_data)
     time.sleep(6)
 
