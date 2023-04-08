@@ -6,9 +6,13 @@
 </head>
 <body>
   <h1>Internal Ordering system</h1>
-  <ul>
-    <li><a href="{{ url_for('reception') }}">Reception</a></li>
-    <li><a href="{{ url_for('kitchen') }}">Kitchen</a></li>
-  </ul>
+    <div class="link-container">
+      <div class="reception">
+        <a href="{{ url_for('reception') }}">Reception</a>
+      </div>
+      <div class="Kitchen">
+        <a href="{{ url_for('kitchen') }}">Kitchen</a>
+      </div>
+    </div>
 </body>
 </html>

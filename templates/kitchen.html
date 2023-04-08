@@ -38,7 +38,7 @@
     <td>
       <form action="{{ url_for('remove_order') }}" method="POST">
         <input type="hidden" name="order_index" value="{{ loop.index0 }}">
-        <button type="submit">Remove</button>
+        <button class="remove" type="submit">Remove</button>
       </form>
     </td>
   </tr>
