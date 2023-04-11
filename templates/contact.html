@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario and Luigi's Pizarria</title>
+    <link rel="stylesheet" href="/static/css/website.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('webpage') }}"><b>Home</b></a></li>
+                    <li><a href="{{ url_for('menu') }}"><b>Menu</b></a></li>
+                    <li><a href="{{ url_for('contact') }}"><b>Contact</b></a></li>
+                    <li><a href="{{ url_for('main') }}"><b>Internal System</b></a></li>
+                    <li><a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </ul>
+    </nav>
+
+    <section class="project-info">
+        <div class="container">
+            <h2>FHICT PROJECT</h2>
+            <p>This is a semester 1 group project done by Josif, Jordi, and Andrii. </p>
+        </div>
+    </section>
+
+</body>
+</html>

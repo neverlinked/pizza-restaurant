@@ -13,6 +13,22 @@ def main():
 def reception():
     return render_template('reception.html', orders=orders)
 
+@app.route('/webpage')
+def webpage():
+    return render_template('websitepage.html')
+
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/cart')
+def cart():
+    return render_template('cart.html')
+
 @app.route('/send_order', methods=['POST'])
 def send_order():
     table_number = request.form['table_number']
@@ -39,7 +55,7 @@ def send_order():
     }
     
     orders.append(order)
-    return redirect(url_for('reception'))
+    return redirect(url_for('main'))
 
 @app.route('/kitchen')
 def kitchen():
@@ -81,4 +97,4 @@ def update_arduino():
     return redirect(url_for('arduino_status'))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5002)

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/static/css/website.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <nav>
+        <ul>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('webpage') }}"><b>Home</b></a></li>
+                    <li><a href="{{ url_for('menu') }}"><b>Menu</b></a></li>
+                    <li><a href="{{ url_for('contact') }}"><b>Contact</b></a></li>
+                    <li><a href="{{ url_for('main') }}"><b>Internal System</b></a></li>
+                    <li><a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </ul>
+    </nav>
+
+
+    <div class="menu">
+        <h2>Our Menu</h2>
+        <hr>
+        <div class="menu-row">
+            <div class="menu-item">
+                <h3>Margherita</h3>
+                <p>Tomato sauce, mozzarella cheese, and fresh basil.</p>
+                <p class="price">$12.99</p>
+                <button class="special-button">Add to Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Pepperoni</h3>
+                <p>Tomato sauce, mozzarella cheese, and pepperoni slices.</p>
+                <p class="price">$14.99</p>
+                <button class="special-button">Add to Order</button>
+            </div>
+        </div>
+        <div class="menu-row">
+            <div class="menu-item">
+                <h3>Marinara</h3>
+                <p>Tomato sauce, garlic, and oregano (no cheese).</p>
+                <p class="price">$10.99</p>
+                <button class="special-button">Add to Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Water Bottle</h3>
+                <p>500ml bottle of still water.</p>
+                <p class="price">$1.99</p>
+                <button class="special-button">Add to Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Coca-Cola</h3>
+                <p>330ml can of Coca-Cola.</p>
+                <p class="price">$2.99</p>
+                <button class="special-button">Add to Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Fanta</h3>
+                <p>330ml can of Fanta Orange.</p>
+                <p class="price">$2.99</p>
+                <button class="special-button">Add to Order</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

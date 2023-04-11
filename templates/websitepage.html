@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario and Luigi's Pizarria</title>
+    <link rel="stylesheet" href="/static/css/website.css">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('webpage') }}"><b>Home</b></a></li>
+                    <li><a href="{{ url_for('menu') }}"><b>Menu</b></a></li>
+                    <li><a href="{{ url_for('contact') }}"><b>Contact</b></a></li>
+                    <li><a href="{{ url_for('main') }}"><b>Internal System</b></a></li>
+                    <li><a href="{{ url_for('cart') }}" class="cart"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>MARIO AND LUIGI'S PIZARRIA</h1>
+        <hr>    
+        <p>Discover the best Italian pizza in town at Mario and Luigi's Pizza! Our pies are made with the finest ingredients, hand-tossed and baked to perfection in an authentic wood-fired oven. Whether you dine in, take out, or order delivery, enjoy an authentic and high-quality pizza experience. Come taste the difference today!</p>
+        <button><a href="/templates/menu.html">ORDER NOW</a></button>
+    </div>
+
+    <img src="/static/css/pic/pizza.gif" alt="">
+
+</body>
+</html>
