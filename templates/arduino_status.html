@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Internal Ordering System</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta http-equiv="refresh" content="5">
+</head>
+<body>
+  <h1>Arduino status</h1>
+  <h2>Status: {{current_status}}</h2>
+  <a href="{{ url_for('reception') }}">Go back to reception</a>
+</body>
+</html>

@@ -15,29 +15,31 @@ def reception():
 
 @app.route('/send_order', methods=['POST'])
 def send_order():
-    table_number = request.form.get('table_number')
-    item1 = request.form.get('item1')
-    item2 = request.form.get('item2')
-    item3 = request.form.get('item3')
-    item4 = request.form.get('item4')
-    item5 = request.form.get('item5')
-    item6 = request.form.get('item6')
-
+    table_number = request.form['table_number']
+    item1 = int(request.form['item1'])
+    item2 = int(request.form['item2'])
+    item3 = int(request.form['item3'])
+    item4 = int(request.form['item4'])
+    item5 = int(request.form['item5'])
+    item6 = int(request.form['item6'])
+    total_price = item1 * 12.99 + item2 *  14.99 + item3 * 10.99 + item4 * 1.99 + item5 *  2.99 + item6 * 2.99
+    
     order = {
         'table_number': table_number,
         'items': {
-            'item1': int(item1) if item1 else 0,
-            'item2': int(item2) if item2 else 0,
-            'item3': int(item3) if item3 else 0,
-            'item4': int(item4) if item4 else 0,
-            'item5': int(item5) if item5 else 0,
-            'item6': int(item6) if item6 else 0,
+            'item1': item1,
+            'item2': item2,
+            'item3': item3,
+            'item4': item4,
+            'item5': item5,
+            'item6': item6
         },
-        'status': 'In Preparation'
+        'status': 'pending',
+        'total_price': total_price
     }
-
+    
     orders.append(order)
-    return redirect(url_for('kitchen'))
+    return redirect(url_for('reception'))
 
 @app.route('/kitchen')
 def kitchen():
