@@ -65,6 +65,18 @@ def remove_order():
         orders.remove(orders[order_index])
     return redirect(url_for('kitchen'))
 
+@app.route('/arduino_status')
+def arduino_status():
+    return render_template('arduino_status.html', current_status = current_status)
+
+current_status = ['Pizza is not ready']
+@app.route('/update_arduino', methods =['POST'])
+def update_arduino():
+    arduino_data = request.get_json()
+    pizza_ready = arduino_data['Pizza']
+    
+    current_status[0] = pizza_ready
+    return redirect(url_for('arduino_status'))
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
