@@ -35,6 +35,10 @@ def loop():
         arduino.digital_read(BUTTON1PIN)
         time.sleep(0.5)
     
+    Pizza_ready= 'Pizza is not sir Luigi'
+    arduino_data = {"Pizza": Pizza_ready, }
+    response = requests.post('http://localhost:5000/update_arduino', json = arduino_data)
+
     arduino.digital_pin_write(pin_green, 0)
     arduino.digital_pin_write(pin_blue, 1)
     while add_time !=0:
@@ -70,13 +74,13 @@ def loop():
     arduino.digital_pin_write(pin_red, 0)
     arduino.digital_pin_write(BUZZER, 1)
     arduino.play_tone(BUZZER, 1000, 500)
-    Pizza_ready= print('Pizza is ready sir Luigi')
+    Pizza_ready= 'Pizza is ready sir Luigi'
     time.sleep(5)
     arduino.digital_pin_write(BUZZER, 0) 
         
         
     arduino_data = {"Pizza": Pizza_ready, }
-    response = requests.post('http://localhost:5000/', json = arduino_data)
+    response = requests.post('http://localhost:5000/update_arduino', json = arduino_data)
     time.sleep(6)
 
 
