@@ -4,11 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario and Luigi's Pizarria</title>
+    <style>
+        /* Style for item container */
+        .item-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .item-input {
+            margin-bottom: 10px;
+        }
+
+        .item-input label {
+            display: inline-block;
+            width: 200px;
+            font-weight: bold;
+        }
+
+        .item-input input[type="number"] {
+            width: 50px;
+        }
+
+        /* Style for credit card inputs */
+        .credit-card-inputs {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .credit-card-inputs label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+
+        .credit-card-inputs input[type="text"] {
+            width: 200px;
+        }
+
+        /* Style for submit button */
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+
+        .submit-button:active {
+            background-color: #3e8e41;
+            transform: translateY(1px);
+        }
+
+        /* Style for total price */
+        .total-price {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
     <link rel="stylesheet" href="/static/css/website.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        // This function will clear the cart after submitting the form
+        function clearCartAfterSubmit() {
+            const itemInputs = document.getElementsByClassName('item-input');
+    
+            for (let i = 0; i < itemInputs.length; i++) {
+                const input = itemInputs[i].querySelector('input');
+                const itemName = input.getAttribute('name');
+                localStorage.removeItem(itemName);
+                input.value = 0;
+            }
+        }
+    
+        // Function to submit the form asynchronously and then clear the cart
+        async function submitFormAndClearCart(event) {
+            event.preventDefault();
+    
+            const form = document.getElementById('orderForm');
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData
+            });
+    
+            if (response.ok) {
+                clearCartAfterSubmit();
+                location.reload(); // Refresh the page after submitting the order
+            } else {
+                alert('There was an error submitting the order. Please try again.');
+            }
+        }
+    
+        // Function to set input values from localStorage
+        function setInputValuesFromLocalStorage() {
+            const itemInputs = document.getElementsByClassName('item-input');
+    
+            for (let i = 0; i < itemInputs.length; i++) {
+                const input = itemInputs[i].querySelector('input');
+                const itemName = 'item' + (i + 1);
+                const storedValue = localStorage.getItem(itemName);
+                
+                if (storedValue) {
+                    input.value = storedValue;
+                }
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            // Attach the submitFormAndClearCart function to the form submit event
+            document.getElementById('orderForm').addEventListener('submit', submitFormAndClearCart);
+    
+            // Set input values from localStorage when the page is loaded
+            setInputValuesFromLocalStorage();
+        });
+    </script>
+    
+    
+    
 </head>
 <body>
-    
+
     <nav>
         <ul>
             <nav>
@@ -24,8 +153,8 @@
     </nav>
 
     <div id="form-container">
-        <form action="{{ url_for('send_order') }}" method="POST">
-            <label for="table_number">Table number:</label>
+        <form id="orderForm" action="{{ url_for('send_order') }}" method="POST">
+            <label for="table_number">Please enter your table number: </label>
             <input type="number" id="table_number" name="table_number" required>
             <br>
             <div class="item-container">
@@ -52,7 +181,20 @@
                 <div class="item-input">
                     <label for="item6">Fanta:</label>
                     <input type="number" id="item6" name="item6" value="0" min="0">
-                </div>          
+                </div> 
+                <div class="credit-card-inputs">
+                    <label for="cardholder_name">Cardholder name:</label>
+                    <input type="text" id="cardholder_name" name="cardholder_name" required>
+                    <br>
+                    <label for="card_number">Card number:</label>
+                    <input type="text" id="card_number" name="card_number" required>
+                    <br>
+                    <label for="expiry_date">Expiry date:</label>
+                    <input type="text" id="expiry_date" name="expiry_date" required>
+                    <br>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </div>         
             </div>
             <input type="submit" class="submit-button" value="Submit">
         </form>
