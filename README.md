@@ -2,11 +2,11 @@
 FHICT S1 Group Project - Done by Josif, Jordi and Andrii
 
 <br>
-Front-end and back-end - Josif
+Front and back-end - Josif
 
 <br>
 <br>
-Internal System's Front-end - Andrii
+Internal System's Design and Front-End - Andrii
 <br>
 <br>
 
